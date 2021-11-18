@@ -72,6 +72,12 @@ if (promptFight === 'skip' || promptFight === 'SKIP') {
  
 // runs function to start game
 for(var i = 0; i < enemyNames.length; i++){
+  if(playerHealth > 0) {
+    window.alert("Welcome to Robot Gladiators! Round " + (i + 1));
+  } else {
+    window.alert("You have lost your robot in battle! Game Over!");
+    break;
+  }
   var pickedEnemyName = enemyNames[i];
   //call fight function with enemy-robot
   enemyHealth = 50;
