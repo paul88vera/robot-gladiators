@@ -90,6 +90,16 @@ var startGame = function() {
       enemyHealth = 50;
       
       fight(enemyNames[i]);
+      // if player is still alive and we're not at the last enemy in the array
+      if (playerHealth > 0 && i < enemyNames.length - 1){
+        var storeConfirm = window.confirm("The fight is over, visit the store before the next round?");
+
+        // if yes take them to the store
+        if (storeConfirm){
+          shop();
+        }
+        
+      }
     } else {
       window.alert("You have lost your robot in battle! Game Over!");
       break;
@@ -122,6 +132,10 @@ var endGame = function() {
   }
 }
 
+
+var shop = function() {
+  console.log("entered the shop");
+}
 
 
 startGame();
