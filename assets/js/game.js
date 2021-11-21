@@ -23,23 +23,24 @@ var fightOrSkip = function() {
     return fightOrSkip();
   }
 
-  if (promptFight === "skip" || promptFight === "SKIP") {
+  if (promptFight === "skip") {
     // confirms player wants to skip
     var confirmSkip = window.confirm("Are you sure you'd like to quit?");
-  }
+ 
 
   // if player picks "skip" confirm and then stop the loop
   if (confirmSkip) {
     window.alert(playerInfo.name + " has decided to skip this fight. Goodbye!");
     // Subtract money from playerMoney for skipping
-    playerInfo.playerMoney = playerInfo.money - 10;
+    playerInfo.playerMoney = Math.max(0, playerInfo.money - 10);
     
 
     // return true if player wants to leave
     return  true;
-  }
-  return false;
+  } 
 }
+  return false;
+};
 
 
 
@@ -115,6 +116,7 @@ var startGame = function() {
 
 
   for(var i = 0; i < enemyInfo.length; i++) {
+    console.log(playerInfo);
     
     if(playerInfo.health > 0) {
       window.alert("Welcome to Robot Gladiators! Round " + (i + 1));
@@ -122,6 +124,8 @@ var startGame = function() {
       var pickedEnemyObj = enemyInfo[i];
 
       pickedEnemyObj.health = randomNumber(40,60);
+
+      console.log(pickedEnemyObj);
       
       fight(pickedEnemyObj);
 
@@ -134,7 +138,6 @@ var startGame = function() {
         shop();
       }
     }
-      
     } else {
       window.alert("You have lost your robot in battle! Game Over!");
       break;
@@ -152,7 +155,7 @@ var endGame = function() {
   // check localStorage for high score, if it's not there, use 0
   var highScore = localStorage.getItem("highscore");
   if (highScore === null) {
-    highScore = highScore || 0;
+    highScore = 0;
   }
 
   // if player has more money than the high score, layer has new high score!
@@ -175,7 +178,7 @@ var endGame = function() {
   else {
     window.alert("Thank you for playing Robot Gladiators! Come back soon!");
   }
-}
+};
 
 
 var shop = function() {
@@ -184,7 +187,9 @@ var shop = function() {
     "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one 1 for REFILL, 2 for UPGRADE, or 3 for LEAVE."
   );
 
+  // convert prompt to a number
 shopOptionPrompt = parseInt(shopOptionPrompt);
+
   switch (shopOptionPrompt) {
     case 1:
       playerInfo.refillHealth();
@@ -205,7 +210,7 @@ shopOptionPrompt = parseInt(shopOptionPrompt);
 };
 
 // START GAME FUNCTIONS
-// player information
+
 
 var getPlayerName = function() {
   var name = "";
@@ -217,6 +222,10 @@ var getPlayerName = function() {
   console.log("You're robots name is " + name);
   return name;
 };
+
+/* END GAME FUNCTIONS */ 
+
+/* GAME INFORMATION / VARIABLES */
 
 var playerInfo = {
   name: getPlayerName(),
@@ -248,10 +257,7 @@ var playerInfo = {
       }
   };
   
-  console.log(playerInfo.name, playerInfo.attack, playerInfo.health);
-  
-  
-  // enemy information
+  /* enemy information */
   var enemyInfo = [
     {
       name: "Roberto",
@@ -266,20 +272,7 @@ var playerInfo = {
       attack: randomNumber(10,14)
     }
   ];
-  
-  var enemy = {
-    name: "Roborto",
-    attack: randomNumber(10, 14),
-    shield: {
-      type: "wood",
-      strength: 10
-    }
-  };
-  
-  console.log(enemyInfo);
-  console.log(enemyInfo[0]);
-  console.log(enemyInfo[0].name);
-  console.log(enemyInfo[0]['attack']);
+
   /* END GAME INFO  / Variables*/
 
 startGame();
