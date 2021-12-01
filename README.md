@@ -1,8 +1,8 @@
 # robot-gladiators
 
-![screenshot]"https://github.com/paul88vera/robot-gladiators/blob/develop/assets/images/robot-gladiators.png"
+![screenshot](https://github.com/paul88vera/robot-gladiators/blob/develop/assets/images/robot-gladiators.png)
 
-![screenshot]"https://github.com/paul88vera/robot-gladiators/blob/develop/assets/images/robot-gladiators2.png"
+![screenshot](https://github.com/paul88vera/robot-gladiators/blob/develop/assets/images/robot-gladiators2.png)
 
 ## Purpose
 This project was used to practice and help understand the use of JS Objects, prompts, and verifications.
