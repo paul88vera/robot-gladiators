@@ -1,5 +1,9 @@
 # robot-gladiators
 
+![screenshot]
+
+![screenshot]
+
 ## Purpose
 This project was used to practice and help understand the use of JS Objects, prompts, and verifications.
 
